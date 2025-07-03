@@ -1,11 +1,11 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
-import AppAppBar from './components/AppAppBar';
-import MainContent from './components/MainContent';
-import Latest from './components/Latest';
-import Footer from './components/Footer';
-import AppTheme from './components/shared-theme/AppTheme';
+import AppAppBar from '../AppAppBar';
+import MainContent from '../MainContent';
+import Latest from '../Latest';
+import Footer from '../Footer';
+import AppTheme from '../shared-theme/AppTheme';
 export default function Blog(props: { disableCustomTheme?: boolean }) {
   return (
     <AppTheme {...props}>
