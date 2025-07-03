@@ -5,8 +5,8 @@ import { MsalProvider } from '@azure/msal-react';
 import { PublicClientApplication } from '@azure/msal-browser';
 import { msalConfig } from './authConfig';
 import Login from './Login';
-import Register from './Register';
 import Home from './Home';
+import Blog from './components/blog/Blog';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -16,8 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Blog/>} />
         </Routes>
       </Router>
     </MsalProvider>
