@@ -4,7 +4,7 @@ import { useMsal } from '@azure/msal-react';
 function Login() {
   const { instance } = useMsal();
 
-  const handleLogin = (e) => {
+  const handleLogin = (e:any) => {
     e.preventDefault();
     instance.loginPopup().catch(err => {
       console.error(err);
