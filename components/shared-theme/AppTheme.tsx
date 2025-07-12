@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import type { ThemeOptions } from '@mui/material/styles';
+
 import { inputsCustomizations } from './customizations/inputs';
 import { dataDisplayCustomizations } from './customizations/dataDisplay';
 import { feedbackCustomizations } from './customizations/feedback';
 import { navigationCustomizations } from './customizations/navigation';
 import { surfacesCustomizations } from './customizations/surfaces';
-import { colorSchemes, typography, shadows, shape } from './themePrimitives';
+import {
+  colorSchemes,
+  typography,
+  shadows,
+  shape,
+} from './themePrimitives';
 
 interface AppThemeProps {
   children: React.ReactNode;
@@ -17,18 +23,21 @@ interface AppThemeProps {
   themeComponents?: ThemeOptions['components'];
 }
 
-export default function AppTheme(props: AppThemeProps) {
-  const { children, disableCustomTheme, themeComponents } = props;
+export default function AppTheme({
+  children,
+  disableCustomTheme,
+  themeComponents,
+}: AppThemeProps) {
   const theme = React.useMemo(() => {
     return disableCustomTheme
       ? {}
       : createTheme({
-          // For more details about CSS variables configuration, see https://mui.com/material-ui/customization/css-theme-variables/configuration/
+          // MUI v6 CSS variable setup
           cssVariables: {
             colorSchemeSelector: 'data-mui-color-scheme',
             cssVarPrefix: 'template',
           },
-          colorSchemes, // Recently added in v6 for building light & dark mode app, see https://mui.com/material-ui/customization/palette/#color-schemes
+          colorSchemes, // Requires light and dark palette setup
           typography,
           shadows,
           shape,
@@ -42,9 +51,11 @@ export default function AppTheme(props: AppThemeProps) {
           },
         });
   }, [disableCustomTheme, themeComponents]);
+
   if (disableCustomTheme) {
-    return <React.Fragment>{children}</React.Fragment>;
+    return <>{children}</>;
   }
+
   return (
     <ThemeProvider theme={theme} disableTransitionOnChange>
       {children}

@@ -1,12 +1,13 @@
+
 import React from 'react';
 import { useMsal } from '@azure/msal-react';
 
-function Login() {
+const Login: React.FC = () => {
   const { instance } = useMsal();
 
-  const handleLogin = (e:any) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    instance.loginPopup().catch(err => {
+    instance.loginPopup().catch((err: any) => {
       console.error(err);
     });
   };
@@ -21,6 +22,6 @@ function Login() {
       </form>
     </div>
   );
-}
+};
 
 export default Login;
